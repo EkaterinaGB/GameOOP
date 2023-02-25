@@ -1,40 +1,20 @@
 package OOP_2.Unit;
 
-public class Monk extends Character {
-    int potions;/*зелья*/
-    int invisibility;/*невидимость*/
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-    public Monk(String name) {
-        super(name, 100, 1, 100, false, 20, 100, 10, 10, 20, 1, 5);
-        this.potions = 10;
-        this.invisibility = 10;
+public class Monk extends Magic {
+    public Monk(String name, int x, int y) {
+        super(name, 5, 30, 7, -4, -4, x, y, 12, true);
     }
-
-    public Monk(String name, int hp, int levl, int power, boolean step, int speed, int maxHp, int def, int damegeMin, int damegeMax, int x, int y, int motivation, int combatSkill) {
-        super(name, hp, levl, power, step, speed, maxHp, def, damegeMin, damegeMax, x, y);
-        this.potions = potions;
-        this.invisibility = invisibility;
-
-    }
-
-    @Override
-    public void step() {
-        super.step();
-    }
-
     @Override
     public String getInfo() {
         return "Я монах!!! ";
     }
 
-    public int getPotions() {
-        return 0;
-
+    @Override
+    public String toString() {
+        return String.format("Монах: %5s  |  HP: %d  |  Speed: %d  |  ATK: (%d) - (%d)  |  DEF: %d  |  (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y);
     }
-
-    public int getInvisibility() {
-        return 0;
-
-    }
-
 }

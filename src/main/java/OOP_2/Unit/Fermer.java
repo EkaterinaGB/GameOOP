@@ -1,43 +1,28 @@
 package OOP_2.Unit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fermer extends Character {/*Крестьянин*/
 
-    protected int feed;/*восполнять запасы*/
-    protected int cartriges; /*Боеприпасы*/
+    protected boolean delivery;
 
-    public Fermer(String name){
-        super(name, 80, 1, 50, false, 12, 80, 5, 10, 30, 0, 0);
-        this.feed = 20;
-        this.cartriges = 50;
+    public Fermer(String name, int x, int y) {
+        super(name, 3, 1, 1, 1, 1, x, y, 1);
+        this.delivery = true;
     }
-
-
-    public Fermer(String name, int hp, int levl, int power, boolean step, int speed, int maxHp, int def, int damegeMin, int damegeMax, int x, int y, int food, int cartriges) {
-        super(name, hp, levl, power, step, speed, maxHp, def, damegeMin, damegeMax, x, y);
-        this.feed = feed;
-        this.cartriges = cartriges;
-
-    }
-
     @Override
-    public void step() {
-        super.step();
+    public void step(ArrayList<Character> t1, ArrayList<Character> t2) {
+        if (!state.equals("Die")) state = "Stand";
     }
 
     @Override
     public String getInfo() {
-        return "Я фермер!!";
+        return " Я Фермер";
     }
 
-
-    public int getCartriges() {
-        return 10;
+    @Override
+    public String toString() {
+        return String.format("Фермер: %s  |  HP: %d  |  Speed: %d  |  ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y);
     }
-
-    public int getFeed() {
-        return 10;
-
-    }
-
-
 }

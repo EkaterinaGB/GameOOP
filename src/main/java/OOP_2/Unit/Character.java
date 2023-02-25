@@ -1,85 +1,46 @@
 package OOP_2.Unit;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Character implements GameInterface {
     protected String name;
     protected int hp;
-    protected int levl;;
-    protected int power;
-    protected  boolean step;
-    int speed;
-    int maxHp, def, damegeMin, damegeMax, x,y;
+    protected int speed, attack;
+    protected int maxHp, def, damegeMin, damegeMax;
 
-    public Character(String name ){
-        this.name = name;
-        this.hp = 100;
-        this.levl = 1;
-        this.power = 100;
-        this.step = false;
-    }
+    protected String state;
 
-    public Character(String name, int hp, int levl, int power, boolean step, int speed, int maxHp, int def, int damegeMin, int damegeMax, int x, int y) {
+
+    protected Vector2D pos;
+
+    public Character(String name, int speed, int maxHp, int def, int damegeMin, int damegeMax, int x, int y, int attack) {
         this.name = name;
-        this.hp = hp;
-        this.levl = levl;
-        this.power = power;
-        this.step = step;
         this.speed = speed;
         this.maxHp = maxHp;
+        this.hp = maxHp;
         this.def = def;
         this.damegeMin = damegeMin;
         this.damegeMax = damegeMax;
-        this.x = x;
-        this.y = y;
-
-    }
-    public static String setName(){
-        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length-1)]);
+        pos = new Vector2D(x, y);
+        this.attack = attack;
+        state = "Stand";
     }
 
-    public static ClassCharacter setClass(){
-        return ClassCharacter.values()[new Random().nextInt(ClassCharacter.values().length -1)];
-    }
-
-    public static void createArreyCharacter1(ArrayList<Character> arrayList, ClassCharacter classCharacter){
-        switch (classCharacter){
-            case Sniper -> arrayList.add(new Sniper(setName()));
-            case Mag -> arrayList.add(new Mag(setName()));
-            case Monk -> arrayList.add(new Mag(setName()));
-            case Fermer -> arrayList.add(new Fermer(setName()));
-            case Outlaw -> arrayList.add(new Outlaw(setName()));
-            case Spearman -> arrayList.add(new Sniper(setName()));
-            case Crossbowman -> arrayList.add(new Outlaw(setName()));
-        }
-    }
-
-    public static void createArreyCharacter2(ArrayList<Character> arrayList, ClassCharacter classCharacter){
-        switch (classCharacter){
-            case Monk -> arrayList.add(new Monk(setName()));
-            case Mag -> arrayList.add(new Monk(setName()));
-            case Fermer -> arrayList.add(new Fermer(setName()));
-            case Spearman -> arrayList.add(new Spearman(setName()));
-            case Outlaw -> arrayList.add(new Crossbowman(setName()));
-            case Crossbowman -> arrayList.add(new Crossbowman(setName()));
-            case Sniper -> arrayList.add(new Spearman(setName()));
-        }
+    public static String getName() { // Дать случайное имя
+        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
 
     @Override
     public String toString() {
-        return String.format("%s %d %d", name, hp, speed);
+        return String.format("Имя: %3s | HP: %2d  |  Speed: %d,  | Def: %d,  | (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.def, this.pos.x, this.pos.y);
     }
 
-    @Override
-    public void step() {
-
-    }
 
     @Override
     public String getInfo() {
-        return "Я человек!";
+        return "Я человек!" + "HP: " + this.hp;
     }
 
 
@@ -90,4 +51,28 @@ public abstract class Character implements GameInterface {
     public int getHp() {
         return hp;
     }
+
+    @Override
+    public void step(ArrayList<Character> t1, ArrayList<Character> t2) {
+
+    }
+
+    public int findNearest(ArrayList<Character> team) {
+        double min = 100;
+        int index = 0;
+        for (int i = 0; i < team.size(); i++) {
+            if (min > pos.distance(team.get(i).pos) & !team.get(i).state.equals("Die")) {
+                index = i;
+                min = pos.distance(team.get(i).pos);
+            }
+        }
+        return index;
+    }
+
+    protected void getDamage(float damage){
+        hp -= damage;
+        if (hp > maxHp) hp = maxHp;
+        if (hp < 0) state = "Die";
+    }
+
 }

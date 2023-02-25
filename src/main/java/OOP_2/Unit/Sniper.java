@@ -1,36 +1,25 @@
 package OOP_2.Unit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sniper extends Arreys {/*Снайпер*/
-    protected int disguise;/*маскировка*/
-    protected int accuracy;/*точность*/
-
-    public Sniper(String name){
-        super(name, 80, 1, 60, false, 40, 80, 5, 50, 80,2, 2, 10, 50);
-        this.disguise = 50;
-        this.accuracy = 10;
-
-    }
-
-    public Sniper(String name, int hp, int levl, int power, boolean step, int speed, int maxHp, int def, int damegeMin, int damegeMax, int x, int y, int cartriges, int distance, int disguise, int concentration) {
-        super(name, hp, levl, power, step, speed, maxHp, def, damegeMin, damegeMax, x, y, cartriges, distance);
-        this.disguise = disguise;
-        this.accuracy = concentration;
+    public Sniper(String name, int x, int y) {
+        super(name, 9, 15, 10, 8, 10, x, y, 12, 32);
     }
 
     @Override
-    public void step() {
-        super.step();
+    public void step(ArrayList<Character> t1, ArrayList<Character> t2) {
+        super.step(t1, t2);
     }
 
     @Override
     public String getInfo() {
         return "Я снайпер!";
     }
-    public void setDisguise(){/*маскироваться*/
 
+    @Override
+    public String toString() {
+        return String.format("Снайпер: %s  |  HP: %d  |  Speed: %d  |  Shoot: %d  | ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.shoot, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y);
     }
-    public void shot(){/*выстрел*/
-
-    }
-
 }

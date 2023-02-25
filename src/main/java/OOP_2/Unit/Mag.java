@@ -1,27 +1,19 @@
 package OOP_2.Unit;
 
-public class Mag extends Character {
-    int mana;/*мана*/
-    int spells; /*заклинания*/
+public class Mag extends Magic{
 
-    public Mag(String name) {
-        super(name, 80, 1, 50, false, 12, 80, 5, 10, 30, 0, 0);
-        this.mana = mana;
-        this.spells = spells;
 
-    }
-
-    @Override
-    public void step() {
-        super.step();
+    public Mag(String name, int x, int y) {
+        super(name, 9, 30, 12, -5, -5, x, y, 17, true);
     }
 
     @Override
     public String getInfo() {
         return "Я маг!!!";
     }
-    public void custSpell(){
-        System.out.println("Использует заклинание");
-    }
 
+    @Override
+    public String toString() {
+        return String.format("Колдун: %s  |  HP: %d  |  Speed: %d  |  ATK: (%d) - (%d)  |  DEF: %d  |  (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y);
+    }
 }
