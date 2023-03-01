@@ -15,6 +15,11 @@ public class Crossbowman extends Arreys{/*Арбалетчик*/
 
     @Override
     public String toString() {
-        return String.format("Арбалетчик: %s  |  HP: %d  |  Speed: %d  |  Shoot: %d  | ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.shoot, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y);
+        return String.format("Арбалетчик: %s  |  HP: %d  |  Speed: %d  |  Shoot: %d  | ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d)  | Status: %s\n", this.name, this.hp, this.speed, this.shoot, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y, this.state);
+    }
+
+    @Override
+    public String getInfo() {
+        return "Арбалетчик";
     }
 }

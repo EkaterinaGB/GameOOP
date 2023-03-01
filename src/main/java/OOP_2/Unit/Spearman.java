@@ -15,12 +15,15 @@ public class Spearman extends Character {/*Копейщик*/
 
     @Override
     public String getInfo() {
-        return "Я копейщик";
+        return "Копейщик";
     }
 
     @Override
     public String toString() {
-        return String.format("Копейщик: %1s  |  HP: %d  |  Speed: %d  |  ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y);
+        return String.format("Копейщик: %1s  |  HP: %d  |  Speed: %d  |  ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y, this.state);
     }
 }
+
+
+
 

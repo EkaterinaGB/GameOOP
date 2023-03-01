@@ -34,7 +34,7 @@ public abstract class Character implements GameInterface {
 
     @Override
     public String toString() {
-        return String.format("Имя: %3s | HP: %2d  |  Speed: %d,  | Def: %d,  | (X,Y): (%d,%d)\n", this.name, this.hp, this.speed, this.def, this.pos.x, this.pos.y);
+        return String.format("Имя: %3s | HP: %2d  |  Speed: %d,  | Def: %d,  | (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.def, this.pos.x, this.pos.y, this.state);
     }
 
 
@@ -72,7 +72,10 @@ public abstract class Character implements GameInterface {
     protected void getDamage(float damage){
         hp -= damage;
         if (hp > maxHp) hp = maxHp;
-        if (hp < 0) state = "Die";
+        if (hp < 0){
+            System.out.println(getInfo() + " " + name + " умер");
+            state = "Die";
+        }
     }
 
 }

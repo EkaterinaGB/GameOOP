@@ -19,11 +19,10 @@ public abstract class Magic extends Character{
         for (int i = 0; i < t1.size(); i++) {
             if (t1.get(i).hp < t1.get(i).maxHp){
                 t1.get(i).getDamage(damegeMax);
+                System.out.println(name + " " + getInfo() + "  ->  " + t1.get(i).name +" "+ t1.get(i).getInfo());
                 break;
             }
         }
 
     }
-
-    public abstract String getInfo();
 }
