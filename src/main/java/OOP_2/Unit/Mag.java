@@ -1,8 +1,6 @@
 package OOP_2.Unit;
 
-public class Mag extends Magic{
-
-
+public class Mag extends Magic {
     public Mag(String name, int x, int y) {
         super(name, 9, 30, 12, -5, -5, x, y, 17, true);
     }
@@ -12,10 +10,6 @@ public class Mag extends Magic{
         return "Маг";
     }
 
-    @Override
-    public String toString() {
-        return String.format("Колдун: %s  |  HP: %d  |  Speed: %d  |  ATK: (%d)  |  DEF: %d  |  (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.damegeMin, this.def, this.pos.x, this.pos.y, this.state);
-    }
 }
 
 

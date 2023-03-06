@@ -1,9 +1,6 @@
 package OOP_2.Unit;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Arreys extends Character {
     int shoot; // выстрелы
@@ -29,7 +26,17 @@ public class Arreys extends Character {
         }
         shoot --;
     }
-
-
+    @Override
+    public String toString() {
+        return "🏹" +
+                " H:" + Math.round(hp) +
+                " D:" + def +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((damegeMin+damegeMax)/2)) + " " +
+                state;
+    }
 }
+
+
+
 

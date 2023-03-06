@@ -1,7 +1,6 @@
 package OOP_2.Unit;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public abstract class Character implements GameInterface {
@@ -31,10 +30,14 @@ public abstract class Character implements GameInterface {
     public static String getName() { // Дать случайное имя
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
-
     @Override
     public String toString() {
-        return String.format("Имя: %3s | HP: %2d  |  Speed: %d,  | Def: %d,  | (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.def, this.pos.x, this.pos.y, this.state);
+        return "👷" +
+                " H:" + Math.round(hp) +
+                " D:" + def +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((damegeMin+damegeMax)/2)) + " " +
+                state;
     }
 
 
@@ -53,9 +56,7 @@ public abstract class Character implements GameInterface {
     }
 
     @Override
-    public void step(ArrayList<Character> t1, ArrayList<Character> t2) {
-
-    }
+    public void step(ArrayList<Character> t1, ArrayList<Character> t2) { }
 
     public int findNearest(ArrayList<Character> team) {
         double min = 100;
@@ -75,7 +76,15 @@ public abstract class Character implements GameInterface {
         if (hp < 0){
             System.out.println(getInfo() + " " + name + " умер");
             state = "Die";
+            hp = 0;
         }
     }
 
+    public int[] getPos() {
+        return new int[]{pos.x, pos.y};
+    }
+
+    public String getState() {
+        return state;
+    }
 }
