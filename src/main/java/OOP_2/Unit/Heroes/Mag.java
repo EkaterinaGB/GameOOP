@@ -1,4 +1,4 @@
-package OOP_2.Unit;
+package OOP_2.Unit.Heroes;
 
 public class Mag extends Magic {
     public Mag(String name, int x, int y) {

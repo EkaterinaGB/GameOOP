@@ -1,4 +1,4 @@
-package OOP_2.Unit;
+package OOP_2.Unit.Heroes;
 
 import java.util.ArrayList;
 

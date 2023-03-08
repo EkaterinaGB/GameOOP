@@ -1,5 +1,8 @@
 package OOP_2.Unit;
 
+import OOP_2.Unit.Heroes.*;
+import OOP_2.Unit.Heroes.Character;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;

@@ -1,5 +1,7 @@
 package OOP_2.Unit;
 
+import OOP_2.Unit.Heroes.Character;
+
 import java.util.Collections;
 
 public class View {

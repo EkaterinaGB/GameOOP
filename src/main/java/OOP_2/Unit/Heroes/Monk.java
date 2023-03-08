@@ -1,4 +1,6 @@
-package OOP_2.Unit;
+package OOP_2.Unit.Heroes;
+
+import OOP_2.Unit.Heroes.Magic;
 
 public class Monk extends Magic {
     public Monk(String name, int x, int y) {

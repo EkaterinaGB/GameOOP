@@ -1,4 +1,6 @@
-package OOP_2.Unit;
+package OOP_2.Unit.Heroes;
+
+import OOP_2.Unit.Heroes.Warrior;
 
 public class Outlaw extends Warrior {/*Разбойник*/
     public Outlaw(String name, int x, int y) {
